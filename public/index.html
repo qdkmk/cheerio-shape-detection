@@ -39,7 +39,7 @@
   </div>
 
   <div class="form-block">
-    <button class="form-button" id="js-create-button" disabled>GO</button>
+    <button class="form-button" id="js-create-button" disabled onclick="sendScrapBox()">GO</button>
   </div>
 
   <div class="form-block">
@@ -49,6 +49,18 @@
     </label>
   </div>
   <script>
+  function sendScrapBox(){
+    let SBprojectId = document.getElementById('js-shared-projectId').value;
+    let SBtitle = document.getElementById('js-shared-title').value;
+    let SBbody = document.getElementById('js-shared-text').innerHTML;
+    alert(`https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${SBbody}`);
+    open(
+    `https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${SBbody}`
+  );
+  }
+
+
+
     const video = document.getElementById('player');
     let videoTracks;
     let localStream = null;
@@ -88,7 +100,7 @@
                       convertLink(barcode.rawValue);
                     alert("call g");
                     getgapi(barcode.rawValue);
-                    document.getElementById("start").disabled = false;
+                    document.getElementById("js-create-button").disabled = false;
                   }
                   if (barcode) stopVideo();
                 }).catch(function(err) {
