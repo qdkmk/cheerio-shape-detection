@@ -4,11 +4,12 @@ const axios = require('axios');
 
 //let url = "https://webcatplus.nii.ac.jp/webcatplus/details/book/isbn/9784766108958.html";
 let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9784043636037"
+let baseurl = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
 //const TARGET_SELECTOR = "td.mcl-mainPart .wcp-sElements-002 div.table-C td";
 
+/*
 axios.get(url).then(response=>{
   console.log(response.data);
-  console.log("resresresponse.data");
   console.log(response.data.items);
   let items = response.data.items;
   console.log("タイトル" + items[0].volumeInfo.title);
@@ -18,10 +19,19 @@ axios.get(url).then(response=>{
   let title = document.getElementsByClassName("title")[0];
   title.innerHTML = "タイトル" + items[0].volumeInfo.title
 })
+*/
 
+function getgapi(isbn){
+  axios.get(baseurl + isbn).then(response=>{
+    alert("getapi")
+    let items = response.data.items;
+    //let title = document.getElementsByClassName("title")[0];
+    let title = document.getElementById("js-shared-text");
+    title.innerHTML = "タイトル:" + items[0].volumeInfo.title + "\n著者:" + items[0].volumeInfo.authors[0]
+  })
+}
 
-
-
+window.getgapi = getgapi;
 
 /*
 axios(url)
