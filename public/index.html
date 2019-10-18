@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="manifest.json">
+    <script src="./js/bundle.js" charset="utf-8"></script>
+    <title>Barcode Detection sample</title>
+</head>
+
+<body>
+
+    <video id="player" muted autoplay></video>
+    <div>
+        Barcode text : <span id="rawValue"></span>
+    </div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <div>
+      <p class="title"></p>
+      <p class="author"></p>
+      <p class="pubdate"></p>
+      <p class="description"></p>
+    </div>
+    <script>
+
+        const video = document.getElementById('player');
+        let videoTracks;
+        let localStream = null;
+        let captureTimer = null;
+        const fps = 10;
+        let medias = {
+            video:
+            {
+                width: 320,
+                height: 240,
+                facingMode:
+                {
+                    exact: "environment"
+                }
+            },
+            audio: false
+        };
+        const startBtn = document.getElementById('start');
+        const stopBtn = document.getElementById('stop');
+        startBtn.onclick = function()
+        {
+            document.getElementById(
+                'rawValue'
+            ).innerHTML = "";
+            navigator.mediaDevices.getUserMedia(medias)
+                .then(function(stream)
+                {
+                    video.srcObject = stream;
+                    localStream = stream;
+                    if (window.BarcodeDetector)
+                    {
+                        const detector = new BarcodeDetector();
+                        detector.formats = "ean_13"
+                        captureTimer = setInterval(function()
+                        {
+                            detector.detect(video).then(
+                                function(barcodes)
+                                {
+                                    let barcode = null;
+                                    for (barcode of barcodes)
+                                    {
+                                        console.log(
+                                            "value : " +
+                                            barcode.rawValue
+                                        );
+                                        console.log(
+                                            barcode);
+                                        document.getElementById(
+                                                'rawValue'
+                                            ).innerHTML =
+                                            convertLink(
+                                                barcode.rawValue
+                                            );
+                                    }
+                                    if (barcode) stopVideo();
+                                }).catch(function(err)
+                            {
+                                console.log(err);
+                            });
+                        }, 1000 / fps);
+                    }
+                    else
+                    {
+                        console.error(
+                            'BarcodeDetection is not enable!');
+                    }
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                }).catch(function(err)
+                {
+                    console.log(err);
+                    medias = {
+                        video:
+                        {
+                            width: 320,
+                            height: 240
+                        },
+                        audio: false
+                    };
+                });
+        };
+        function stopVideo()
+        {
+            clearInterval(captureTimer);
+            localStream.getTracks().forEach(function(track)
+            {
+                track.stop();
+            });
+            localStream = null;
+            video.srcObject = null;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        };
+        stopBtn.onclick = function()
+        {
+            stopVideo();
+        };
+        function convertLink(str)
+        {
+            const regexpUrl =
+                /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
+            const regexpLink = function(all, url, h, href)
+            {
+                return '<a href="h' + href + '">' + url + '</a>';
+            }
+            return str.replace(regexpUrl, regexpLink);
+        };
+        // load時にstart状態にする
+        startBtn.click();
+    </script>
+</body>
+
+</html>
