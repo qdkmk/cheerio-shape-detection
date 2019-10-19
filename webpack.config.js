@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     getpage:'./src/js/getpage.js',
     sendScrapBox: './src/js/sendScrapBox.js',
+    main: './src/js/main.js',
   },
   // 出力の設定
   output: {

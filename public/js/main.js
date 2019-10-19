@@ -81,32 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/sendScrapBox.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/main.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/env.js":
-/*!***********************!*\
-  !*** ./src/js/env.js ***!
-  \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./src/js/main.js":
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  LOCALSTORAGE_PROJECT_ID: 'projectId',\n  SELECTOR_INPUT_PROJECT_ID: 'js-shared-projectId',\n  SELECTOR_INPUT_TITLE: 'js-shared-title',\n  SELECTOR_INPUT_TEXT: 'js-shared-text',\n  SELECTOR_CHECKBOX: 'js-checkbox-scma',\n  SELECTOR_CREATE_BUTTON: 'js-create-button',\n});\n\n\n//# sourceURL=webpack:///./src/js/env.js?");
-
-/***/ }),
-
-/***/ "./src/js/sendScrapBox.js":
-/*!********************************!*\
-  !*** ./src/js/sendScrapBox.js ***!
-  \********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _env_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./env.js */ \"./src/js/env.js\");\n\n\nfunction sendScrapBox(){\n  let SBprojectId = document.getElementById(_env_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].SELECTOR_INPUT_PROJECT_ID).value;\n  let SBtitle = document.getElementById(_env_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].SELECTOR_INPUT_TITLE).value;\n  let SBbody = document.getElementById(_env_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].SELECTOR_INPUT_TEXT).value;\n  alert(`https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${SBbody}`);\n  open(\n  `https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${encodeURIComponent(SBbody)}`\n);\n}\nwindow.sendScrapBox = sendScrapBox;\n\n\n//# sourceURL=webpack:///./src/js/sendScrapBox.js?");
+eval("if ('serviceWorker' in navigator) {\n  navigator.serviceWorker.register('sw.js').then(function() {\n    console.log('サービスワーカーの登録成功');\n  }).catch(function(err) {\n    console.log('サービスワーカーの登録ができませんでした：', err);\n  });\n}\n\n\n//# sourceURL=webpack:///./src/js/main.js?");
 
 /***/ })
 
