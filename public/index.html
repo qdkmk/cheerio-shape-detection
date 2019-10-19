@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="manifest" href="manifest.json">
-  <script src="./js/bundle.js" charset="utf-8"></script>
+  <script src="./js/getpage.js" charset="utf-8"></script>
+  <script src="./js/sendScrapBox.js" charset="utf-8"></script>
   <title>Barcode Detection sample</title>
 </head>
 
@@ -49,18 +50,6 @@
     </label>
   </div>
   <script>
-  function sendScrapBox(){
-    let SBprojectId = document.getElementById('js-shared-projectId').value;
-    let SBtitle = document.getElementById('js-shared-title').value;
-    let SBbody = document.getElementById('js-shared-text').innerHTML;
-    alert(`https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${SBbody}`);
-    open(
-    `https://scrapbox.io/${SBprojectId}/${SBtitle}?body=${SBbody}`
-  );
-  }
-
-
-
     const video = document.getElementById('player');
     let videoTracks;
     let localStream = null;

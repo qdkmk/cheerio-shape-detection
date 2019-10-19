@@ -23,11 +23,14 @@ axios.get(url).then(response=>{
 
 function getgapi(isbn){
   axios.get(baseurl + isbn).then(response=>{
-    alert("getapi")
     let items = response.data.items;
-    //let title = document.getElementsByClassName("title")[0];
-    let title = document.getElementById("js-shared-text");
-    title.innerHTML = "タイトル:" + items[0].volumeInfo.title + "\n著者:" + items[0].volumeInfo.authors[0]
+    let text = document.getElementById("js-shared-text");
+    if(typeof(items[0].volumeInfo.description) === "undefined" || items[0].volumeInfo.description === null){
+      text.innerHTML = "タイトル:" + items[0].volumeInfo.title + "\n著者:" + items[0].volumeInfo.authors[0];
+    }else{
+      text.innerHTML = "タイトル:" + items[0].volumeInfo.title + "\n著者:" + items[0].volumeInfo.authors[0] + "\n説明:" + items[0].volumeInfo.description;
+    }
+
   })
 }
 
