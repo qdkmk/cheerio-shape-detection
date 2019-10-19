@@ -6,8 +6,9 @@ module.exports = {
   mode: 'development',
   // エントリーポイントの設定
   entry: {
-    getpage:'./src/js/getpage.js',
-    sendScrapBox: './src/js/sendScrapBox.js',
+    //getpage:'./src/js/getpage.js',
+    //SendScrapBox: './src/js/SendScrapBox.js',
+    //ShareTarget: './src/js/ShareTarget.js',
     main: './src/js/main.js',
   },
   // 出力の設定

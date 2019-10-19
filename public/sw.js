@@ -8,7 +8,8 @@ var urlsToCache = [
   'images/ico/android-chrome-192x192.png',
   'js/getpage.js',
   'js/main.js',
-  'js/sendScrapBox.js'
+  'js/SendScrapBox.js',
+  'css.css'
 ];
 
 
