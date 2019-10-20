@@ -13,10 +13,4 @@ if ('serviceWorker' in navigator) {
 }
 ShareTarget.setInputValue();
 SendSB.addOnClick();
-
-document.getElementById(env.VIDEO_STOP).addEventListener('click', () => {
-  ShapeDetection.stopVideo();
-});
-document.getElementById(env.VIDEO_START).addEventListener('click', () => {
-  ShapeDetection.startBtnClick();
-});
+ShapeDetection.addOnClick();
