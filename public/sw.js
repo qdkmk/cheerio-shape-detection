@@ -6,9 +6,7 @@ var urlsToCache = [
   '/',
   'manifest.json',
   'images/ico/android-chrome-192x192.png',
-  'js/getpage.js',
   'js/main.js',
-  'js/SendScrapBox.js',
   'css.css'
 ];
 
