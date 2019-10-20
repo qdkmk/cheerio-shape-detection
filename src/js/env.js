@@ -8,4 +8,5 @@ export default {
   VIDEO_PLAYER: 'player',
   VIDEO_START: 'start',
   VIDEO_STOP: 'stop',
+  LOADING: 'loading',
 }

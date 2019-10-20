@@ -6,6 +6,7 @@ class ShapeDetection {
     this.startBtn = document.getElementById(env.VIDEO_START);
     this.stopBtn = document.getElementById(env.VIDEO_STOP);
     this.video = document.getElementById(env.VIDEO_PLAYER);
+    this.inputText = document.getElementById(env.SELECTOR_INPUT_TEXT);
     this.localStream = null;
     this.captureTimer = null;
     this.fps = 10;
@@ -50,8 +51,21 @@ class ShapeDetection {
                   //console.log(barcode);
                   document.getElementById('rawValue').innerHTML =
                     this.convertLink(barcode.rawValue);
-                  alert("call g");
-                  GetApi.getgapi(barcode.rawValue);
+                  try {
+                    document.getElementById(env.LOADING).style.display ="block";
+                    GetApi.getgapi(barcode.rawValue)
+                      .then((text)=>{
+                        this.inputText.value += text;
+                      })
+                      .catch((err)=>{
+                        console.log(err)
+                      })
+                  } catch (err) {
+                    console.log(err);
+                  } finally {
+                    document.getElementById(env.LOADING).style.display ="none";
+                  }
+
                   document.getElementById("js-create-button").disabled = false;
                 }
                 if (barcode) this.stopVideo();
