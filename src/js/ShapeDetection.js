@@ -22,7 +22,7 @@ class ShapeDetection {
     };
   }
 
-  addOnClick(){
+  addOnClick() {
     this.stopBtn.addEventListener('click', () => {
       this.stopVideo();
     });
@@ -35,38 +35,33 @@ class ShapeDetection {
   startBtnClick() {
     document.getElementById('rawValue').innerHTML = "";
 
-    navigator.mediaDevices.getUserMedia(this.medias)
-      .then((stream) => {
+    navigator.mediaDevices.getUserMedia(this.medias).then((stream) => {
         this.video.srcObject = stream;
         this.localStream = stream;
         if (window.BarcodeDetector) {
           const detector = new BarcodeDetector();
           detector.formats = "ean_13"
           this.captureTimer = setInterval(() => {
-            detector.detect(this.video).then(
-              (barcodes) => {
+            detector.detect(this.video).then((barcodes) => {
                 let barcode = null;
                 for (barcode of barcodes) {
-                  console.log("value : " + barcode.rawValue);
                   //console.log(barcode);
-                  document.getElementById('rawValue').innerHTML =
-                    this.convertLink(barcode.rawValue);
+                  document.getElementById('rawValue').innerHTML = this.convertLink(barcode.rawValue);
                   try {
-                    document.getElementById(env.LOADING).style.display ="block";
-                    GetApi.getgapi(barcode.rawValue)
-                      .then((text)=>{
+                    document.getElementById(env.LOADING).style.display = "block";
+                    GetApi.getgapi(barcode.rawValue).then((text) => {
                         this.inputText.value += text;
+                        alert("書籍情報を自動入力しました")
                       })
-                      .catch((err)=>{
+                      .catch((err) => {
                         console.log(err)
+                        alert("書籍情報の取得に失敗しました\n" + err)
                       })
                   } catch (err) {
                     console.log(err);
                   } finally {
-                    document.getElementById(env.LOADING).style.display ="none";
+                    document.getElementById(env.LOADING).style.display = "none";
                   }
-
-                  document.getElementById("js-create-button").disabled = false;
                 }
                 if (barcode) this.stopVideo();
               }).catch((err) => {
@@ -76,47 +71,35 @@ class ShapeDetection {
         } else {
           console.error('BarcodeDetection is not enable!');
         }
-        this.setButtonconditionStop();
+        this.switchButtoncondition();
       }).catch((err) => {
         console.log(err);
       });
   }
 
-
-//startBtnClick() {
-
-//}
-
-setButtonconditionStop() {
-  this.startBtn.disabled = true;
-  this.stopBtn.disabled = false;
-}
-setButtonconditionStart() {
-  this.startBtn.disabled = false;
-  this.stopBtn.disabled = true;
-}
-
-stopVideo() {
-  clearInterval(this.captureTimer);
-  this.localStream.getTracks().forEach((track) => {
-    track.stop();
-  });
-  this.localStream = null;
-  this.video.srcObject = null;
-  this.setButtonconditionStart();
-};
-
-
-convertLink(str) {
-  const regexpUrl =
-    /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
-  const regexpLink = (all, url, h, href) => {
-    return '<a href="h' + href + '">' + url + '</a>';
+  switchButtoncondition() {
+    this.startBtn.disabled = !this.startBtn.disabled;
+    this.stopBtn.disabled = !this.stopBtn.disabled
   }
-  return str.replace(regexpUrl, regexpLink);
-};
-// load時にstart状態にする
-//startBtn.click();
+
+  stopVideo() {
+    clearInterval(this.captureTimer);
+    this.localStream.getTracks().forEach((track) => {
+      track.stop();
+    });
+    this.localStream = null;
+    this.video.srcObject = null;
+    this.switchButtoncondition();
+  };
+
+  convertLink(str) {
+    const regexpUrl =
+      /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
+    const regexpLink = (all, url, h, href) => {
+      return '<a href="h' + href + '">' + url + '</a>';
+    }
+    return str.replace(regexpUrl, regexpLink);
+  };
 
 }
 

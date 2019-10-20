@@ -14,27 +14,25 @@ class GetApi {
           let item = response.data.items[0].volumeInfo;
           text = "タイトル:" + item.title + "\n著者:" + item.authors;
 
+          //発行日有無
           if (this.consistData(item.publishedDate)) {
-            //発行日あり
             text += "\n発行日:" + item.publishedDate;
           }
+          //description有無
           if (this.consistData(item.description)) {
-            //descriptionあり
             text += "\n説明:" + item.description;
           }
+          //ISBN13有無
           if (this.consistData(item.industryIdentifiers[1].identifier)) {
-            //ISBN13あり
             text += "\nISBN:" + item.industryIdentifiers[1].identifier;
           }
+          //description有無
           if (this.consistData(item.description)) {
-            //descriptionあり
             text += "\n説明:" + item.description;
           }
-          if (this.consistData(item.imageLinks)) {
-            if (this.consistData(item.imageLinks.thumbnail)) {
-              //thumbnailあり
+          //thumbnail有無
+          if (this.consistData(item.imageLinks)　&& this.consistData(item.imageLinks.thumbnail)) {
               text += "\n[" + item.imageLinks.thumbnail + ".png]";
-            }
           }
         }
         resolve(text);
