@@ -5,8 +5,6 @@ var CACHE_NAME = 'cache-csd-v1';
 var urlsToCache = [
   '/',
   'manifest.json',
-  'images/ico/android-chrome-192x192.png',
-  'js/main.js',
   'css.css'
 ];
 

@@ -22,10 +22,10 @@ class ShapeDetection {
   }
 
   addOnClick(){
-    document.getElementById(env.VIDEO_STOP).addEventListener('click', () => {
+    this.stopBtn.addEventListener('click', () => {
       this.stopVideo();
     });
-    document.getElementById(env.VIDEO_START).addEventListener('click', () => {
+    this.startBtn.addEventListener('click', () => {
       this.startBtnClick();
     });
   }
