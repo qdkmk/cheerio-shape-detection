@@ -109,14 +109,6 @@ class ShapeDetection {
     this.switchButtoncondition();
   };
 
-  convertLink(str) {
-    const regexpUrl =
-      /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
-    const regexpLink = (all, url, h, href) => {
-      return '<a href="h' + href + '">' + url + '</a>';
-    }
-    return str.replace(regexpUrl, regexpLink);
-  };
 //isbnが9784からはじまることの確認（日本の書籍）とチェックデジットの検算
   isValidISBN13(code) {
     if (!code) return false;

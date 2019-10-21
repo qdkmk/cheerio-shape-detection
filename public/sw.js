@@ -1,13 +1,13 @@
 //キャッシュ名
-var CACHE_NAME = 'cache-csd-v1';
+var CACHE_NAME = 'cache-csd1';
 
 //キャッシュに入れるリソースのパス
 var urlsToCache = [
   '/',
   'manifest.json',
+  'images/ico/android-chrome-192x192.png',
   'css.css'
 ];
-
 
 
 //インストール状態のイベント処理

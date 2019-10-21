@@ -1,27 +1,27 @@
 {
-  "name": "cheerio-shape-detection", //ここをサイト名に
-  "short_name": "CSD", //ここをサイト名に
-  "theme_color": "#2196f3", //好きなカラーコードを設定
+  "name": "cheerio-shape-detection",
+  "short_name": "CSD",
+  "theme_color": "#2196f3",
   "icons": [{
-    "src": "images/ico/android-chrome-192x192.png", //下記サイズの画像ファイルのパスを記載
+    "src": "images/ico/android-chrome-192x192.png",
     "sizes": "192x192",
     "type": "image/png"
-  }, {
-    "src": "images/ico/android-chrome-512x512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }],
-  "share_target":
-{
-  "action": "/share",
-  "params":
+    }, {
+      "src": "images/ico/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+    "share_target":
   {
-    "title": "title",
-    "text": "text",
-    "url": "url"
+    "action": "/share",
+    "params":
+    {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000000"
   }
-},
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#000000"
-}

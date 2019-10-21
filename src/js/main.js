@@ -1,8 +1,6 @@
-import SendSB from './SendScrapBox.js'
-import GetApi from './GetApi.js'
 import ShareTarget from './ShareTarget.js'
+import SendSB from './SendScrapBox.js'
 import ShapeDetection from './ShapeDetection.js'
-import env from './env.js'
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').then(function() {
