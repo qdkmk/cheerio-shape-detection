@@ -9,12 +9,29 @@ body {
   color: #00D4D6;
 }
 #loading{
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
   display: none;
+}
+
+
+.button {
+  margin: 1rem 0.5rem;
+}
+#start,#stop {
+  background-color: #00D4D6;
+  border: none;
+  border-radius: 0.125rem;
+  padding: 1rem;
+  width: 48%;
+  font-size: 1.2rem;
+  color: #fff;
+}
+#start:disabled,#stop:disabled{
+  opacity: 0.5;
 }
 
 :focus {
@@ -64,12 +81,6 @@ body {
 
 .form-textarea {
   height: 15rem;
-}
-
-
-.form-checkbox:checked {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-  background-color: currentColor;
 }
 
 .form-button {

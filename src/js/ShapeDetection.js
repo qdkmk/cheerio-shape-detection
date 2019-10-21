@@ -26,9 +26,11 @@ class ShapeDetection {
     this.stopBtn.addEventListener('click', () => {
       this.stopVideo();
     });
+    this.stopBtn.disabled = true;
     this.startBtn.addEventListener('click', () => {
       this.startBtnClick();
     });
+    this.startBtn.disabled = false;
   }
 
 
