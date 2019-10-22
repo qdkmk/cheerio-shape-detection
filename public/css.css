@@ -6,7 +6,7 @@ html {
 body {
   margin: 3vw;
   background-color: #f7fafc;
-  color: #00D4D6;
+  color: #009e73;
   text-align: center;
 }
 #loading{
@@ -28,7 +28,7 @@ body {
   margin: 1rem 0.5rem;
 }
 #start {
-  background-color: #00D4D6;
+  background-color: #009e73;
   border: none;
   border-radius: 0.125rem;
   padding: 1rem;
@@ -39,7 +39,7 @@ body {
 
 :focus {
   outline: none;
-  box-shadow: 0 0 3px 2px #00D4D6;
+  box-shadow: 0 0 3px 2px #009e73;
 }
 
 .title {
@@ -87,23 +87,19 @@ p.form-label{
   height: auto;
 }
 
-.form-input.--title {
-  letter-spacing: -0.05rem;
-}
-
 .form-textarea {
   height: 15rem;
 }
 
 .form-button {
-  background-color: #00D4D6;
+  background-color: #009e73;
   border: none;
   border-radius: 0.125rem;
   padding: 1rem;
   width: 95%;
   font-size: 1.5rem;
   color: #fff;
-  margin: 5px;
+  margin: 0.3rem;
 }
 
 .align-center {
@@ -117,16 +113,16 @@ p.form-label{
 #drawer-icon {
   cursor: pointer;
   display: inline-block;
-  height: 50px;
+  height: 3rem;
   position: fixed;
   bottom:5vh;
   right: 5vw;
-  width: 50px;
+  width: 3rem;
   z-index: 99;
 }
 #drawer-icon span {
-  background:  #00D4D6;
-  border-radius: 4px;
+  background:  #009e73;
+  border-radius: 0.5rem;
   display: block;
   height: 16%;
   left: 50%;
@@ -139,8 +135,8 @@ p.form-label{
 #drawer-icon span::before,
 #drawer-icon span::after {
   -webkit-transform: rotate(0);
-  background: #00D4D6;
-  border-radius: 4px;
+  background: #009e73;
+  border-radius: 0.5rem;
   content: "";
   display: block;
   height: 100%;
@@ -194,7 +190,7 @@ p.form-label{
   height: auto;
   background: #fff;
   transition: .3s linear;
-  border-radius: 1px;
+  border-radius: 0.2rem;
 }
 #drawer-checkbox:checked ~ #menu-modal-content {
   opacity: 1;

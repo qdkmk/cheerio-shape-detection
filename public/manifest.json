@@ -1,13 +1,13 @@
 {
   "name": "cheerio-shape-detection",
   "short_name": "CSD",
-  "theme_color": "#2196f3",
+  "theme_color": "#009e73",
   "icons": [{
-    "src": "images/ico/android-chrome-192x192.png",
+    "src": "images/ico/ico192.png",
     "sizes": "192x192",
     "type": "image/png"
     }, {
-      "src": "images/ico/android-chrome-512x512.png",
+      "src": "images/ico/ico512.png",
       "sizes": "512x512",
       "type": "image/png"
     }],
