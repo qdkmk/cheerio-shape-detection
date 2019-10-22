@@ -7,6 +7,7 @@ class ShapeDetection {
     this.video = document.getElementById(env.VIDEO_PLAYER);
     this.barcodeText = document.getElementById(env.BARCODE_TEXT);
     this.inputText = document.getElementById(env.SELECTOR_INPUT_TEXT);
+    this.loadingGif = document.getElementById(env.LOADING);
     this.localStream = null;
     this.captureTimer = null;
     this.startOrStopButtonStatus = false;
@@ -88,12 +89,15 @@ startOrStopButton(status){
   }
   //Google Books APIの呼び出し
   callGetApi(code) {
+    this.loadingGif.style.display = "block";
     GetApi.getgapi(code).then((text) => {
         this.inputText.value += text;
+        this.loadingGif.style.display = "none";
         alert("書籍情報を自動入力しました")
       })
       .catch((err) => {
         console.log(err)
+        this.loadingGif.style.display = "none";
         alert("書籍情報の取得に失敗しました\n" + err)
       })
   }
