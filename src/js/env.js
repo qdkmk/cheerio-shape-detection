@@ -11,7 +11,7 @@ export default {
   LOADING: 'loading',
   MAKE_LINK:'make-link',//indexページのモーダルにある自動リンク生成ボタン
   ADD_LINK_LIST:'add-link-list',//indexページのモーダルにある自動リンクワード登録ボタン
-  ADD_LINK_WORD_MODAL:'add-link-word-modal-content',//
+  ADD_LINK_WORD_MODAL:'add-link-word-modal-content',//indexページのモーダルにあるリンクワード追加ボタン
   LINK_WORD_LIST:'link-word-list',//indexページのlink-word-list入力欄(非表示)
-  DRAWER_CHECKBOX:'drawer-checkbox',
+  DRAWER_CHECKBOX:'drawer-checkbox',//modalの開閉
 }

@@ -32,7 +32,7 @@ class SendSB {
         document.getElementById(env.ADD_LINK_WORD_MODAL).style.display = "none";
         document.getElementById(env.MAKE_LINK).style.display = "block";
         document.getElementById(env.ADD_LINK_WORD_MODAL).style.opacity = 0;
-        this.addLinkListButton.innerHTML = "自動リンク生成用の単語を登録";
+        this.addLinkListButton.innerHTML = "自動リンク置換用の単語を登録";
       }
     });
   }
