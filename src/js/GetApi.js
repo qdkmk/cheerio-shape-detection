@@ -12,16 +12,13 @@ class GetApi {
           reject("Google Booksに登録されていないISBNです");
         } else {
           let item = response.data.items[0].volumeInfo;
-          text = "タイトル:" + item.title + "\n著者:" + item.authors;
+          text = "[***** [" + item.title + "]]\n[* 著者:[" + item.authors + "]]";
 
           //発行日有無
           if (this.consistData(item.publishedDate)) {
             text += "\n発行日:" + item.publishedDate;
           }
-          //description有無
-          if (this.consistData(item.description)) {
-            text += "\n説明:" + item.description;
-          }
+
           //ISBN13有無
           if (this.consistData(item.industryIdentifiers[1].identifier)) {
             text += "\nISBN:" + item.industryIdentifiers[1].identifier;
