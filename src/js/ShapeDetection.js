@@ -4,11 +4,12 @@ import GetApi from './GetApi.js'
 class ShapeDetection {
   constructor() {
     this.startBtn = document.getElementById(env.VIDEO_START);
-    this.stopBtn = document.getElementById(env.VIDEO_STOP);
     this.video = document.getElementById(env.VIDEO_PLAYER);
+    this.barcodeText = document.getElementById(env.BARCODE_TEXT);
     this.inputText = document.getElementById(env.SELECTOR_INPUT_TEXT);
     this.localStream = null;
     this.captureTimer = null;
+    this.startOrStopButtonStatus = false;
     this.fps = 10;
     this.medias = {
       video: {
@@ -23,18 +24,22 @@ class ShapeDetection {
   }
 
   addOnClick() {
-    this.stopBtn.addEventListener('click', () => {
-      this.stopVideo();
-    });
-    this.stopBtn.disabled = true;
     this.startBtn.addEventListener('click', () => {
-      this.startBtnClick();
+      this.startOrStopButton(this.startOrStopButtonStatus);
     });
-    this.startBtn.disabled = false;
+  }
+startOrStopButton(status){
+  if(status){
+    this.stopVideo();
+  }else{
+    this.startVideo();
   }
 
+}
 
-  startBtnClick() {
+  startVideo() {
+    this.video.style.display = "block";
+    this.barcodeText.style.display = "block";
     document.getElementById('rawValue').innerHTML = "";
     navigator.mediaDevices.getUserMedia(this.medias).then(async(stream) => {
       this.video.srcObject = stream;
@@ -94,12 +99,19 @@ class ShapeDetection {
   }
 
 
-  switchButtoncondition() {
-    this.startBtn.disabled = !this.startBtn.disabled;
-    this.stopBtn.disabled = !this.stopBtn.disabled
+  switchButtoncondition(){
+    this.startOrStopButtonStatus = !this.startOrStopButtonStatus;
+    if(this.startOrStopButtonStatus){
+      this.startBtn.innerHTML = "Stop";
+    }else{
+      this.startBtn.innerHTML = "バーコードから書籍情報を取得";
+    }
   }
 
+
   stopVideo() {
+    this.video.style.display = "none";
+    this.barcodeText.style.display = "none";
     clearInterval(this.captureTimer);
     this.localStream.getTracks().forEach((track) => {
       track.stop();

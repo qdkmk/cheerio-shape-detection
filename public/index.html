@@ -14,16 +14,31 @@
 </head>
 
 <body>
+<input id="drawer-checkbox" type="checkbox">
+<label id="drawer-icon" for="drawer-checkbox"><span></span></label>
+<label id="drawer-close" for="drawer-checkbox"></label>
+<div id="menu-modal-content">
+  <button id="add-link-list" class="form-button">自動リンク生成用の単語を登録</button>
+
+  <div id="add-link-word-modal-content" class="align-center">
+    <p class="form-label">自動でリンクに変換したい単語を改行区切りで入力してください</p>
+  <textarea id="link-word-list" class="form-textarea">
+  はじめて
+  ハロー
+  問題</textarea>
+  </div>
+  <button id="make-link" class="form-button">登録単語から自動でリンク生成</button>
+</div>
 <img src="./images/loading.gif" id = "loading">
+
 <div class="video">
   <video id="player" muted autoplay></video>
 </div>
-<div>
+<div id="barcode-text">
   Barcode text : <span id="rawValue"></span>
 </div>
   <div class="button">
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
+    <button id="start">バーコードから書籍情報を取得</button>
   </div>
   <div>
     <p class="title"></p>
