@@ -107,10 +107,10 @@ p.form-label{
 }
 
 /*modal*/
-#drawer-checkbox {
+#modal-checkbox {
   display: none;
 }
-#drawer-icon {
+#modal-icon {
   cursor: pointer;
   display: inline-block;
   height: 3rem;
@@ -120,7 +120,7 @@ p.form-label{
   width: 3rem;
   z-index: 99;
 }
-#drawer-icon span {
+#modal-icon span {
   background:  #009e73;
   border-radius: 0.5rem;
   display: block;
@@ -132,8 +132,8 @@ p.form-label{
   transition: all 0.3s ease-in-out;
   width: 84%;
 }
-#drawer-icon span::before,
-#drawer-icon span::after {
+#modal-icon span::before,
+#modal-icon span::after {
   -webkit-transform: rotate(0);
   background: #009e73;
   border-radius: 0.5rem;
@@ -148,17 +148,17 @@ p.form-label{
   transition: all 0.3s ease-in-out;
   width: 100%;
 }
-#drawer-icon span::before {
+#modal-icon span::before {
   margin-top: -38%;
 }
-#drawer-icon span::after {
+#modal-icon span::after {
   margin-top: 19%;
 }
-#drawer-checkbox:checked ~ #drawer-icon span {
+#modal-checkbox:checked ~ #modal-icon span {
   background: rgba(51, 51, 51, 0);
 }
-#drawer-checkbox:checked ~ #drawer-icon span::before,
-#drawer-checkbox:checked ~ #drawer-icon span::after {
+#modal-checkbox:checked ~ #modal-icon span::before,
+#modal-checkbox:checked ~ #modal-icon span::after {
   content: "";
   display: block;
   height: 100%;
@@ -168,11 +168,11 @@ p.form-label{
   top: 50%;
   width: 100%;
 }
-#drawer-checkbox:checked ~ #drawer-icon span::before {
+#modal-checkbox:checked ~ #modal-icon span::before {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-#drawer-checkbox:checked ~ #drawer-icon span::after {
+#modal-checkbox:checked ~ #modal-icon span::after {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
@@ -192,7 +192,7 @@ p.form-label{
   transition: .3s linear;
   border-radius: 0.2rem;
 }
-#drawer-checkbox:checked ~ #menu-modal-content {
+#modal-checkbox:checked ~ #menu-modal-content {
   opacity: 1;
   visibility: visible;
 }
@@ -203,7 +203,7 @@ p.form-label{
   transition: .3s linear;
 }
 
-#drawer-close {
+#modal-close {
   display: none;
   position: fixed;
   z-index: 39;
@@ -215,7 +215,7 @@ p.form-label{
   opacity: 0;
   transition: all 0.3s ease-in-out 0s;
 }
-#drawer-checkbox:checked ~ #drawer-close {
+#modal-checkbox:checked ~ #modal-close {
   display: block;
   opacity: 0.3;
 }

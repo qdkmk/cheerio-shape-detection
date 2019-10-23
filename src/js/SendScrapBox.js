@@ -19,7 +19,7 @@ class SendSB {
       let text = document.getElementById(env.SELECTOR_INPUT_TEXT).value;
       let linkWordArray = document.getElementById(env.LINK_WORD_LIST).value.split(/\n/);
       document.getElementById(env.SELECTOR_INPUT_TEXT).value =  this.makeLink(text,linkWordArray);
-      document.getElementById(env.DRAWER_CHECKBOX).checked = false;
+      document.getElementById(env.MODAL_CHECKBOX).checked = false;
     });
     this.addLinkListButton.addEventListener('click',()=> {
       this.addLinkListWordModalVisible = !this.addLinkListWordModalVisible;
